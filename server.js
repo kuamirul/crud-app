@@ -11,3 +11,7 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html')
   // Note: __dirname is directory that contains the JavaScript source code. 
 })
+
+app.post('/quotes', (req, res) => {
+  console.log('Hellooooooooooooooooo!')
+})
