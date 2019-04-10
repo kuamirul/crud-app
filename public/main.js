@@ -21,3 +21,24 @@ update.addEventListener('click', function () {
 })
 
 })
+
+var del = document.getElementById('delete')
+
+del.addEventListener('click', function () {
+  fetch('values', {
+    method: 'delete',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      'name': 'Lorem'
+    })
+  })
+  .then(res => {
+    if (res.ok) return res.json()
+  }).
+  then(data => {
+    console.log(data)
+    window.location.reload()
+  })
+})

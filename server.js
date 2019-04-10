@@ -46,13 +46,9 @@ app.post('/values', (req, res) => {
     console.log('saved to database')
     res.redirect('/')
   })
-  
-
-  
 })
 
 // res.render(view, locals)
-
 
 app.put('/values', (req, res) => {
   db.collection('values')
@@ -70,4 +66,10 @@ app.put('/values', (req, res) => {
   })
 })
 
-
+app.delete('/values', (req, res) => {
+  db.collection('values').findOneAndDelete({name: req.body.name},
+  (err, result) => {
+    if (err) return res.send(500, err)
+    res.send({message: 'A value has been deleted'})
+  })
+})
