@@ -14,14 +14,6 @@ app.use(express.static('public'))
 app.use(bodyParser.json())
 
 app.get('/', (req, res) => {
-  // res.sendFile('D:/KuAmirul/Documents/GitHub/crud-app' + '/index.html')
-  // var cursor = db.collection('values').find()
-  // Note: __dirname is directory that contains the JavaScript source code. 
-
-    // db.collection('values').find().toArray(function(err, results) {
-  // console.log(results)
-  // send HTML file populated with quotes here
-  // })
   
   db.collection('values').find().toArray((err, result) => {
     if (err) return console.log(err)
