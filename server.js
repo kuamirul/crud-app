@@ -1,4 +1,4 @@
-console.log('May Node be with you')
+console.log('Running Node')
 
 const express = require('express');
 const app = express();
@@ -13,8 +13,8 @@ app.use(express.static('public'))
 
 app.use(bodyParser.json())
 
+//-------------RENDER EJS-------------
 app.get('/', (req, res) => {
-  
   db.collection('values').find().toArray((err, result) => {
     if (err) return console.log(err)
     // renders index.ejs
@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
   
 })
 
-
+//-------------CONNECT TO MONGO-------------
 MongoClient.connect('mongodb://admin:localhost1@ds125423.mlab.com:25423/testdata', { useNewUrlParser: true }, (err, client) => {
   if (err) return console.log(err)
   db = client.db('testdata') // whatever your database name is
@@ -32,6 +32,7 @@ MongoClient.connect('mongodb://admin:localhost1@ds125423.mlab.com:25423/testdata
   })
 })
 
+//-------------CREATE-------------
 app.post('/values', (req, res) => {
   db.collection('values').save(req.body, (err, result) => {
     if (err) return console.log(err)
@@ -40,8 +41,8 @@ app.post('/values', (req, res) => {
   })
 })
 
-// res.render(view, locals)
 
+//-------------UPDATE-------------
 app.put('/values', (req, res) => {
   db.collection('values')
   .findOneAndUpdate({name: 'Lorem'}, {
@@ -58,6 +59,7 @@ app.put('/values', (req, res) => {
   })
 })
 
+//-------------DELETE-------------
 app.delete('/values', (req, res) => {
   db.collection('values').findOneAndDelete({name: req.body.name},
   (err, result) => {

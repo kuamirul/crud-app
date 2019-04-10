@@ -2,6 +2,7 @@
 // main.js
 var update = document.getElementById('update')
 
+//-------------UPDATE-------------
 update.addEventListener('click', function () {
   // Send PUT Request here
   fetch('values', {
@@ -22,6 +23,7 @@ update.addEventListener('click', function () {
 
 })
 
+//-------------DELETE-------------
 var del = document.getElementById('delete')
 
 del.addEventListener('click', function () {
